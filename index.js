@@ -21,3 +21,24 @@ const zebraStripes = [
   { width: 0.59, color: null },
   { width: 7.31, color: null },
 ];
+
+var sortedRobots = robots.map( function(robot) {
+  if (knownDecepticons.includes(robot.name)) {
+    return Object.assign({}, robot, {alliance: 'decepticon'})
+  } else {
+    return Object.assign({}, robot, {alliance: 'autobot'})
+  }
+})
+
+var coloredZebraStripes = zebraStripes.map( function(stripe, i) {
+  if (i % 2 == 0) {
+    return Object.assign({}, stripe, {color: 'black'})
+  } else {
+    return Object.assign({}, stripe, {color: 'white'})
+  }
+})
+
+
+// A stripe is black when the stripe's index is even, and it's white if a stripe's index is odd.
+// (Hint: the callback we pass to .map() takes more than one parameter)
+// The original objects in the zebraStripes array must not be modified, so be sure to use Object.assign()
